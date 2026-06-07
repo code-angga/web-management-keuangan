@@ -7,6 +7,8 @@ import CreateCategory from "../features/category/CreateCategory";
 import EditCategory from "../features/category/EditCategory";
 import Dashboard from "../features/pages/DashboardPage";
 
+import TransactionsPage from "../features/pages/TransactionsPage";
+
 const Router = () => {
   return (
     <BrowserRouter>
@@ -17,6 +19,9 @@ const Router = () => {
         <Route path="/category" element={<CategoryPage />} />
         <Route path="/editCategory/:id" element={<EditCategory />} />
         <Route path="/dashboard" element={<Dashboard />} />
+
+        {/* transactions */}
+        <Route path="/transactions" element={<TransactionsPage />} />
       </Routes>
     </BrowserRouter>
   );
