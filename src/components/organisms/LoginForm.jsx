@@ -56,7 +56,7 @@ const LoginForm = () => {
           onChange={(e) => setForm({ ...form, password: e.target.value })}
         />
       </FormGroup>
-      <div className="grid grid-cols-2 mt-2 text-sm">
+      <div className="grid grid-cols-2 my-2 text-sm">
         <div>
           Belum punya akun?{" "}
           <Link to="/register" className="font-semibold">

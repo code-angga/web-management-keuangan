@@ -1,26 +1,29 @@
 import { useNavigate } from "react-router-dom";
-import CategoryForm from "../../components/organisms/CategoryForm";
-import { createCategory } from "../services/authService";
+import TransactionForm from "../../components/organisms/TransactionForm";
+import { createTransaction } from "../services/transactionService";
+import DashboardLayouts from "../../templates/DashboardLayouts";
 
-const CreateCategory = () => {
+
+const CreateTransaction = () => {
   const navigate = useNavigate();
 
   const handleCreate = async (data) => {
     try {
-      console.log("DATA YANG DIKIRIM:", data);
-      await createCategory(data);
-      navigate("/dashboard");
+      await createTransaction(data);
+      navigate("/transactions");
     } catch (error) {
       console.log(error);
     }
   };
 
   return (
-    <div className="p-5">
-      <h1 className="text-2xl font-semibold mb-5">Tambah Category</h1>
-      <CategoryForm onSubmit={handleCreate} />
-    </div>
+    <DashboardLayouts>
+      <div className="p-5">
+        <h1 className="text-2xl font-semibold mb-5">Tambah Transaction</h1>
+        <TransactionForm onSubmit={handleCreate} />
+      </div>
+    </DashboardLayouts>
   );
 };
 
-export default CreateCategory;
+export default CreateTransaction;

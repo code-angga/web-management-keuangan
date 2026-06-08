@@ -1,26 +1,28 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import CategoryForm from "../../components/organisms/CategoryForm";
-import { getCategoryById, updateCategory } from "../services/authService";
+import DashboardLayouts from "../../templates/DashboardLayouts";
+import TransactionForm from "../../components/organisms/TransactionForm";
+import {
+  getTransactionById,
+  updateTransaction,
+} from "../services/transactionService";
 
-const EditCategory = () => {
+const UpdateTransaction = () => {
   const { id } = useParams();
-  console.log(id);
 
   const navigate = useNavigate();
 
-  const [category, setCategory] = useState(null);
+  const [transaction, setTransaction] = useState(null);
 
   useEffect(() => {
-    fetchCategoryById();
+    fetchTransactionById();
   }, []);
 
-  const fetchCategoryById = async () => {
+  const fetchTransactionById = async () => {
     try {
-      const response = await getCategoryById(id);
-      console.log("getcategori response", response);
+      const response = await getTransactionById(id);
 
-      setCategory(response.data);
+      setTransaction(response.data);
     } catch (error) {
       console.log(error);
     }
@@ -28,23 +30,25 @@ const EditCategory = () => {
   const handleUpdate = async (data) => {
     console.log(id);
     try {
-      await updateCategory(id, data);
-      alert("Category berhasil di Update");
-      navigate("/dashboard");
+      await updateTransaction(id, data);
+      alert("Transaction berhasil di Update");
+      navigate("/transactions");
     } catch (error) {
       console.log(error);
     }
   };
 
-  if (!category) return <p className="p-5">Loading</p>;
+  if (!transaction) return <p className="p-5">Loading</p>;
 
   return (
-    <div className="p-5">
-      <h1 className="text-2xl font-semibold mb-5">Edit Category</h1>
+    <DashboardLayouts>
+      <div className="p-5">
+        <h1 className="text-2xl font-semibold mb-5">Edit Transaction</h1>
 
-      <CategoryForm initialData={category} onSubmit={handleUpdate} />
-    </div>
+        <TransactionForm initialData={transaction} onSubmit={handleUpdate} />
+      </div>
+    </DashboardLayouts>
   );
 };
 
-export default EditCategory;
+export default UpdateTransaction;

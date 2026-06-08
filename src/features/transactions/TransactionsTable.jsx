@@ -4,7 +4,6 @@ const TransactionsTable = ({ transactions, onEdit, onDelete }) => {
       <thead>
         <tr className="bg-gray-100">
           <th className="p-2 text-left">Nama</th>
-          <th className="p-2 text-left">Deskripsi</th>
           <th className="p-2">Aksi</th>
         </tr>
       </thead>
@@ -15,7 +14,6 @@ const TransactionsTable = ({ transactions, onEdit, onDelete }) => {
             (
               <tr key={item.id}>
                 <td className="p-2">{item.name}</td>
-                <td className="p-2">{item.description}</td>
                 <td className="p-2 text-center">
                   <button
                     onClick={() => onEdit(item)}
