@@ -26,7 +26,7 @@ const DashboardPage = () => {
 
   const navigate = useNavigate();
   const handleEdit = async (item) => {
-    navigate(`/editTransaction/${item.id}`);
+    navigate(`/updateTransaction/${item.id}`);
   };
 
   const handleDelete = async (item) => {
@@ -49,11 +49,27 @@ const DashboardPage = () => {
   return (
     <DashboardLayouts>
       <div className="p-5">
-        <h1 className="text-2xl font-bold mb-5">Transactions</h1>
+        {/* buat agar sejajar dengna tambah transaction */}
+        <div className="flex">
+          {/* buat ini jadi 1 col */}
+          <div className="flex-col mr-auto pb-5">
+            <h1 className="text-2xl font-bold">Transactions</h1>
 
-        {/* SUMMARY CARD AREA (kalau ada nanti) */}
-        <div className="mb-5">
-          <p className="text-gray-600">Data Transaction</p>
+            {/* SUMMARY CARD AREA (kalau ada nanti) */}
+            <div className="">
+              <p className="text-gray-600">Data Transaction</p>
+            </div>
+          </div>
+
+          {/* buat di paling kanan transaction dengan flex */}
+          <div className="flex justify-end py-5">
+            <button
+              onClick={() => navigate("/createTransaction")}
+              className="bg-blue-800 text-white px-4 py-2 rounded cursor-pointer"
+            >
+              Tambah Transaction
+            </button>
+          </div>
         </div>
 
         {/* CATEGORY TABLE */}
