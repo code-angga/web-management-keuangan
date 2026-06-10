@@ -19,11 +19,11 @@ const Sidebar = () => {
             Category
           </NavLink>
         </li>
-
         <li>
-          <NavLink to="/transactions" className={linkClasses}>
-            Transactions
-          </NavLink>
+          <Link to="/users">Users</Link>
+        </li>
+        <li>
+          <Link to="/transactions">Transactions</Link>
         </li>
       </ul>
     </div>

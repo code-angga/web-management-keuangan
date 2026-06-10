@@ -76,7 +76,6 @@ const DashboardPage = () => {
           )}
         </div>
       </div>
-      );
     </DashboardLayouts>
   );
 };

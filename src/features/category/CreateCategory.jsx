@@ -7,7 +7,7 @@ const CreateCategory = () => {
 
   const handleCreate = async (data) => {
     try {
-      console.log("DATA YANG DIKIRIM:", data);
+      // console.log("DATA YANG DIKIRIM:", data);
       await createCategory(data);
       navigate("/dashboard");
     } catch (error) {
