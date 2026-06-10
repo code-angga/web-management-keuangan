@@ -28,6 +28,9 @@ const Sidebar = () => {
         <li>
           <Link to="/create">Category</Link>
         </li>
+        <li>
+          <Link to="/users">Users</Link>
+        </li>
       </ul>
     </div>
   );

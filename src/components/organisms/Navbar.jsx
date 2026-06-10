@@ -8,6 +8,7 @@ const Navbar = () => {
       localStorage.removeItem("token");
       navigate("/");
     };
+    const user = JSON.parse(localStorage.getItem("user"));
 
     return (
       <div className="bg-white shadow p-4 flex justify-between">
@@ -19,6 +20,8 @@ const Navbar = () => {
         >
           LogOut
         </button>
+        <p>{user?.username}</p>
+        <p>{user?.role === 1 ? "Admin" : "User"}</p>
       </div>
     );
   };
