@@ -20,10 +20,14 @@ const Sidebar = () => {
           </NavLink>
         </li>
         <li>
-          <Link to="/users">Users</Link>
+          <NavLink to="/users" className={linkClasses}>
+            Users
+          </NavLink>
         </li>
         <li>
-          <Link to="/transactions">Transactions</Link>
+          <NavLink to="/transactions" className={linkClasses}>
+            Transactions
+          </NavLink>
         </li>
       </ul>
     </div>
