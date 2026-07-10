@@ -16,9 +16,11 @@ const CreateCategory = () => {
   };
 
   return (
-    <div className="p-5">
-      <h1 className="text-2xl font-semibold mb-5">Tambah Category</h1>
-      <CategoryForm onSubmit={handleCreate} />
+    <div className="min-h-screen flex justify-center items-center p-5">
+      <div className="w-full max-w-md">
+        <h1 className="text-2xl font-semibold mb-5 ">Tambah Category</h1>
+        <CategoryForm onSubmit={handleCreate} />
+      </div>
     </div>
   );
 };

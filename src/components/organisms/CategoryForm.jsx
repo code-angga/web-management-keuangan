@@ -39,10 +39,11 @@ const CategoryForm = ({ onSubmit, initialData }) => {
         }
       />
 
-      <div className="mb-4">
-        <label className="block mb-2">Deskripsi</label>
+      <div className="mb-3">
+        <label className="block mb-2 ">Deskripsi</label>
         <textarea
-          placeholder="description"
+          className="border border-gray-300"
+          placeholder=" description "
           value={form.description}
           onChange={(e) =>
             setForm({
