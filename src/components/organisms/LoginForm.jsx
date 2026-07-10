@@ -32,8 +32,8 @@ const LoginForm = () => {
   };
 
   return (
-    <div className="w-full max-w-md bg-white p-6 rounded shadow">
-      <h1 className="text-2xl font-bold mb-5">Login</h1>
+    <div className="w-full max-w-md bg-white p-6 rounded-lg shadow-sm">
+      <h1 className="text-2xl font-bold mb-5 text-center">Login</h1>
 
       <FormGroup label="Email">
         <Input
@@ -52,10 +52,10 @@ const LoginForm = () => {
           onChange={(e) => setForm({ ...form, password: e.target.value })}
         />
       </FormGroup>
-      <div className="grid grid-cols-2 my-2 text-sm">
+      <div className="grid grid-cols-2  text-sm mb-5">
         <div>
           Belum punya akun?{" "}
-          <Link to="/register" className="font-semibold">
+          <Link to="/register" className="font-semibold ">
             Daftar
           </Link>
         </div>
