@@ -13,14 +13,11 @@ const Sidebar = () => {
         <li>
           <Link to="/create">Category</Link>
         </li>
-<<<<<<< HEAD
         <li>
           <Link to="/users">Users</Link>
-=======
-
+        </li>
         <li>
           <Link to="/transactions">Transactions</Link>
->>>>>>> bac71eb120a0d84328c6fcb987ff5194755e2554
         </li>
       </ul>
     </div>

@@ -32,7 +32,7 @@ const RegisterForm = () => {
 
   return (
     <div className="w-full max-w-md bg-white p-6 rounded shadow">
-      <h1 className="text-2xl font-bold mb-5">Register</h1>
+      <h1 className="text-2xl font-bold mb-5 text-center">Register</h1>
 
       <FormGroup label="Nama">
         <Input

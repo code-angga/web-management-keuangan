@@ -36,7 +36,7 @@ const CategoryPage = () => {
 
   return (
     <div className="p-5">
-      <div className="flex justify-between mb-5">
+      <div className="flex justify-between mb-5 ">
         <h1 className="text-2xl font-semibold">Category</h1>
         <button
           onClick={(e) => navigate("/category/create")}

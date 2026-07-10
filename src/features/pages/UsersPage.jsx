@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import UsersTable from "../category/UsersTable";
+import DashboardLayouts from "../../templates/DashboardLayouts";
 
 import { getAllUsers } from "../services/authService";
 
@@ -24,10 +25,12 @@ const UserPage = () => {
   }, []);
 
   return (
-    <div className="p-5">
-      <h1 className="text-2xl font-semibold mb-5">Data User</h1>
-      {loading ? <p>Loading...</p> : <UsersTable users={user} />}
-    </div>
+    <DashboardLayouts>
+      <div className="p-5">
+        <h1 className="text-2xl font-semibold mb-5">Data User</h1>
+        {loading ? <p>Loading...</p> : <UsersTable users={user} />}
+      </div>
+    </DashboardLayouts>
   );
 };
 
