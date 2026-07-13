@@ -19,6 +19,7 @@ export const getAllUsers = async () => {
 
 export const createCategory = async (data) => {
   const response = await api.post("/api/v1/category", data);
+  console.log(response.data);
   return response.data;
 };
 

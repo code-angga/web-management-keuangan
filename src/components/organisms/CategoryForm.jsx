@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+
 import FormGroup from "../molecules/FormGroup";
 import Input from "../atoms/Input";
 import Button from "../atoms/Button";
@@ -10,7 +11,8 @@ const CategoryForm = ({ onSubmit, initialData }) => {
   });
 
   useEffect(() => {
-    console.log("ininial data", initialData);
+    console.log("Initial Data:", initialData);
+
     if (initialData) {
       setForm({
         name: initialData.name || "",
@@ -25,25 +27,25 @@ const CategoryForm = ({ onSubmit, initialData }) => {
   };
 
   return (
-    <form action="" onSubmit={handleSubmit}>
-      <FormGroup label="nama category" />
-      <Input
-        type="text"
-        placeholder="Nama Category"
-        value={form.name}
-        onChange={(e) =>
-          setForm({
-            ...form,
-            name: e.target.value,
-          })
-        }
-      />
+    <form onSubmit={handleSubmit}>
+      <FormGroup label="Nama Category">
+        <Input
+          type="text"
+          placeholder="Masukkan nama category"
+          value={form.name}
+          onChange={(e) =>
+            setForm({
+              ...form,
+              name: e.target.value,
+            })
+          }
+        />
+      </FormGroup>
 
-      <div className="mb-3">
-        <label className="block mb-2 ">Deskripsi</label>
-        <textarea
-          className="border border-gray-300"
-          placeholder=" description "
+      <FormGroup label="Deskripsi">
+        <Input
+          type="text"
+          placeholder="Masukkan deskripsi"
           value={form.description}
           onChange={(e) =>
             setForm({
@@ -52,14 +54,13 @@ const CategoryForm = ({ onSubmit, initialData }) => {
             })
           }
         />
-      </div>
+      </FormGroup>
 
-      <button
-        type="submit"
-        className="bg-blue-800 hover:bg-blue-500 text-white px-4 py-2 rounded cursor-pointer"
-      >
-        Simpan
-      </button>
+      <div className="my-4">
+        <Button type="submit">
+          {initialData ? "Update Category" : "Simpan Category"}
+        </Button>
+      </div>
     </form>
   );
 };
