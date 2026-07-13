@@ -1,51 +1,84 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import CategoryTable from "../category/CategoryTable";
+import DashboardLayouts from "../../templates/DashboardLayouts";
+import CategoryTable from "../../features/category/CategoryTable";
 
-// import { getCategory, deleteCategory } from "../services/authService";
+import { getAllCategory, deleteCategory } from "../services/authService";
 
 const CategoryPage = () => {
   const navigate = useNavigate();
+
   const [categories, setCategories] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   const fetchCategories = async () => {
     try {
-      const data = await getCategory();
+      const response = await getAllCategory();
 
-      setCategories(data);
+      setCategories(response.data || response);
     } catch (error) {
       console.log(error);
+    } finally {
+      setLoading(false);
     }
   };
 
   useEffect(() => {
     fetchCategories();
   }, []);
-  const handleDelete = async (id) => {
+
+  const handleEdit = (item) => {
+    navigate(`/updateCategory/${item.id}`);
+  };
+
+  const handleDelete = async (item) => {
+    const confirmDelete = window.confirm("Yakin ingin menghapus category?");
+
+    if (!confirmDelete) return;
+
     try {
-      await deleteCategory(id);
+      await deleteCategory(item.id);
+
       fetchCategories();
     } catch (error) {
       console.log(error);
     }
   };
-  const handleEdit = (id) => {
-    navigate("");
-  };
 
   return (
-    <div className="p-5">
-      <div className="flex justify-between mb-5 ">
-        <h1 className="text-2xl font-semibold">Category</h1>
-        <button
-          onClick={(e) => navigate("/category/create")}
-          className="bg-blue-800 text-white py-3 px-5 shadow rounded cursor-pointer"
-        >
-          Tambah Category
-        </button>
+    <DashboardLayouts>
+      <div className="p-5">
+        <div className="flex">
+          <div className="mr-auto">
+            <h1 className="text-2xl font-bold">Category</h1>
+
+            <p className="text-gray-600">Data Category</p>
+          </div>
+
+          <button
+            onClick={() => navigate("/create")}
+            className="bg-blue-800 text-white px-4 py-2 rounded cursor-pointer"
+          >
+            Tambah Category
+          </button>
+        </div>
+
+        <div className="bg-white rounded shadow p-4 mt-5">
+          <h2 className="text-lg font-semibold mb-3">Data Category</h2>
+
+          {loading ? (
+            <p>Loading...</p>
+          ) : (
+            <CategoryTable
+              categories={categories}
+              onEdit={handleEdit}
+              onDelete={handleDelete}
+            />
+          )}
+        </div>
       </div>
-    </div>
+    </DashboardLayouts>
   );
 };
 

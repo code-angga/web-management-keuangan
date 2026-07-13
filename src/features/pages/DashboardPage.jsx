@@ -7,6 +7,7 @@ import {
   updateCategory,
 } from "../services/authService";
 import { useNavigate } from "react-router-dom";
+import CategoryCharts from "../category/CategoryCharts";
 
 const id = null;
 const DashboardPage = () => {
@@ -54,27 +55,7 @@ const DashboardPage = () => {
   return (
     <DashboardLayouts>
       <div className="p-5">
-        <h1 className="text-2xl font-bold mb-5">Dashboard</h1>
-
-        {/* SUMMARY CARD AREA (kalau ada nanti) */}
-        <div className="mb-5">
-          <p className="text-gray-600">Data kategori</p>
-        </div>
-
-        {/* CATEGORY TABLE */}
-        <div className="bg-white p-4 rounded shadow">
-          <h2 className="text-lg font-semibold mb-3">Data Category</h2>
-
-          {loading ? (
-            <p>Loading data...</p>
-          ) : (
-            <CategoryTable
-              categories={categories}
-              onEdit={handleEdit}
-              onDelete={handleDelete}
-            />
-          )}
-        </div>
+        <CategoryCharts categories={categories} />
       </div>
     </DashboardLayouts>
   );
