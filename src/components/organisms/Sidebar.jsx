@@ -15,7 +15,7 @@ const Sidebar = () => {
         </li>
 
         <li>
-          <NavLink to="/create" className={linkClasses}>
+          <NavLink to="/categories" className={linkClasses}>
             Category
           </NavLink>
         </li>

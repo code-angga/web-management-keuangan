@@ -22,11 +22,13 @@ const CreateCategory = () => {
   };
 
   return (
-    <div className="p-5">
-      <h1 className="text-2xl font-semibold mb-5">Tambah Category</h1>
+    <DashboardLayouts>
+      <div className="p-5">
+        <h1 className="text-2xl font-semibold mb-5">Tambah Category</h1>
 
-      <CategoryForm onSubmit={handleCreate} />
-    </div>
+        <CategoryForm onSubmit={handleCreate} />
+      </div>
+    </DashboardLayouts>
   );
 };
 

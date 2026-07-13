@@ -17,11 +17,13 @@ const Router = () => {
       <Routes>
         <Route path="/" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
-        <Route path="/create" element={<CreateCategory />} />
-        <Route path="/categories" element={<CategoryPage />} />
-        <Route path="/editCategory/:id" element={<EditCategory />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/users" element={<UserPage />} />
+
+        {/* category */}
+        <Route path="/categories" element={<CategoryPage />} />
+        <Route path="/createCategory" element={<CreateCategory />} />
+        <Route path="/editCategory/:id" element={<EditCategory />} />
 
         {/* transactions */}
         <Route path="/transactions" element={<TransactionsPage />} />

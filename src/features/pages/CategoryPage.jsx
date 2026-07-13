@@ -2,7 +2,8 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import DashboardLayouts from "../../templates/DashboardLayouts";
-import CategoryTable from "../../features/category/CategoryTable";
+// import CategoryTable from "../components/CategoryTable";
+import CategoryTable from "../category/CategoryTable";
 
 import { getAllCategory, deleteCategory } from "../services/authService";
 
@@ -14,11 +15,13 @@ const CategoryPage = () => {
 
   const fetchCategories = async () => {
     try {
+      setLoading(true);
+
       const response = await getAllCategory();
 
       setCategories(response.data || response);
     } catch (error) {
-      console.log(error);
+      console.log("ERROR:", error);
     } finally {
       setLoading(false);
     }
@@ -40,6 +43,8 @@ const CategoryPage = () => {
     try {
       await deleteCategory(item.id);
 
+      alert("Category berhasil dihapus");
+
       fetchCategories();
     } catch (error) {
       console.log(error);
@@ -49,26 +54,28 @@ const CategoryPage = () => {
   return (
     <DashboardLayouts>
       <div className="p-5">
-        <div className="flex">
-          <div className="mr-auto">
+        {/* Header */}
+        <div className="flex items-center justify-between mb-5">
+          <div>
             <h1 className="text-2xl font-bold">Category</h1>
 
             <p className="text-gray-600">Data Category</p>
           </div>
 
           <button
-            onClick={() => navigate("/create")}
-            className="bg-blue-800 text-white px-4 py-2 rounded cursor-pointer"
+            onClick={() => navigate("/createCategory")}
+            className="bg-blue-800 hover:bg-blue-700 text-white px-4 py-2 rounded cursor-pointer"
           >
             Tambah Category
           </button>
         </div>
 
-        <div className="bg-white rounded shadow p-4 mt-5">
+        {/* Table */}
+        <div className="bg-white p-4 rounded shadow">
           <h2 className="text-lg font-semibold mb-3">Data Category</h2>
 
           {loading ? (
-            <p>Loading...</p>
+            <p>Loading data...</p>
           ) : (
             <CategoryTable
               categories={categories}
