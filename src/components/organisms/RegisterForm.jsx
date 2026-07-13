@@ -96,6 +96,16 @@ const RegisterForm = () => {
       </div>
 
       <Button onClick={handleRegister}>Register</Button>
+
+      <p className="text-center text-sm text-gray-600 mt-4">
+        Sudah punya akun?{" "}
+        <button
+          onClick={() => navigate("/")}
+          className="text-blue-500 hover:underline cursor-pointer"
+        >
+          Login
+        </button>
+      </p>
     </div>
   );
 };

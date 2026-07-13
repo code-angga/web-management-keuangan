@@ -10,13 +10,11 @@ export const registerUser = async (data) => {
 export const loginUser = async (data) => {
   const response = await api.post("/api/v1/user/login", data);
   return response.data;
-  console.log("response", response.data);
 };
 
 export const getAllUsers = async () => {
   const response = await api.get("/api/v1/user");
   return response.data;
-  console.log("respon get all data", response.data);
 };
 
 export const createCategory = async (data) => {

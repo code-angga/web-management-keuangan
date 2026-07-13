@@ -2,22 +2,36 @@ import { useState, useEffect } from "react";
 import FormGroup from "../molecules/FormGroup";
 import Input from "../atoms/Input";
 import Button from "../atoms/Button";
+import { getAllCategory } from "../../features/services/authService";
 
 const TransactionForm = ({ onSubmit, initialData }) => {
   const [form, setForm] = useState({
     name: "",
-    description: "",
+    categoryId: "",
   });
+  const [categories, setCategories] = useState([]);
 
   useEffect(() => {
-    console.log("ininial data", initialData);
     if (initialData) {
       setForm({
         name: initialData.name || "",
-        // description: initialData.description || "",
+        categoryId: initialData.categoryId || initialData.category?.id || "",
       });
     }
   }, [initialData]);
+
+  useEffect(() => {
+    const fetchCategories = async () => {
+      try {
+        const response = await getAllCategory();
+        setCategories(response.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    fetchCategories();
+  }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -38,14 +52,29 @@ const TransactionForm = ({ onSubmit, initialData }) => {
           })
         }
       />
+      <div className="my-4">
+        <FormGroup label="Category" />
+        <select
+          value={form.categoryId}
+          onChange={(e) =>
+            setForm({
+              ...form,
+              categoryId: e.target.value,
+            })
+          }
+          className="w-full border focus:border-blue-500 focus:outline-none p-2 rounded"
+        >
+          <option value="">Pilih Category</option>
+          {categories.map((category) => (
+            <option key={category.id} value={category.id}>
+              {category.name}
+            </option>
+          ))}
+        </select>
+      </div>
 
       <div className="my-4">
-      <button
-        type="submit"
-        className="bg-blue-800 hover:bg-blue-500 text-white px-4 py-2 rounded cursor-pointer"
-      >
-        Simpan
-      </button>
+        <Button type="submit">Simpan</Button>
       </div>
     </form>
   );

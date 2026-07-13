@@ -18,13 +18,9 @@ const LoginForm = () => {
   const handleLogin = async () => {
     try {
       const response = await loginUser(form);
-
-      // console.log("LOGIN RESPONSE:", response);
-      localStorage.setItem("token", response.data.token);
-
-      localStorage.setItem("user", JSON.stringify(response.data.user));
-
       if (response.success) {
+        localStorage.setItem("token", response.data.token);
+        localStorage.setItem("user", JSON.stringify(response.data.user));
         navigate("/dashboard");
       } else {
         alert(response.message);

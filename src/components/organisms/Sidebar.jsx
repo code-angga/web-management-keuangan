@@ -1,23 +1,33 @@
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const Sidebar = () => {
+  const linkClasses = ({ isActive }) =>
+    isActive ? "text-blue-500 font-bold" : "text-gray-900";
   return (
-    <div className="w-64 bg-gray-800 text-white min-h-screen p-5">
+    <div className="w-64 bg-gray-400 text-gray-900 min-h-screen p-5">
       <h2 className="text-xl font-bold mb-6">Finance App</h2>
 
       <ul className="space-y-3">
         <li>
-          <Link to="/dashboard">Dashboard</Link>
+          <NavLink to="/dashboard" className={linkClasses}>
+            Dashboard
+          </NavLink>
         </li>
 
         <li>
-          <Link to="/categories">Category</Link>
+          <NavLink to="/create" className={linkClasses}>
+            Category
+          </NavLink>
         </li>
         <li>
-          <Link to="/users">Users</Link>
+          <NavLink to="/users" className={linkClasses}>
+            Users
+          </NavLink>
         </li>
         <li>
-          <Link to="/transactions">Transactions</Link>
+          <NavLink to="/transactions" className={linkClasses}>
+            Transactions
+          </NavLink>
         </li>
       </ul>
     </div>
